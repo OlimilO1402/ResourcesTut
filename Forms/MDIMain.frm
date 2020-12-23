@@ -122,7 +122,6 @@ Begin VB.MDIForm MDIMain
       BeginProperty Panels {0713E89E-850A-101B-AFC0-4210102A8DA7} 
          NumPanels       =   1
          BeginProperty Panel1 {0713E89F-850A-101B-AFC0-4210102A8DA7} 
-            Key             =   ""
             Object.Tag             =   ""
          EndProperty
       EndProperty
@@ -178,6 +177,7 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Option Explicit
 Public MDIChildren As Collection
+Private m_FormArrange As FormArrangeConstants
 
 Private Sub MDIForm_Load()
     If MDIChildren Is Nothing Then Set MDIChildren = New Collection
@@ -206,6 +206,12 @@ Private Sub MDIForm_QueryUnload(Cancel As Integer, UnloadMode As Integer)
         End If
         If Cancel Then Exit Sub
     Next
+End Sub
+
+Private Sub MDIForm_Resize()
+    Select Case m_FormArrange
+    Case FormArrangeConstants.vbTileHorizontal, FormArrangeConstants.vbTileVertical: Me.Arrange m_FormArrange
+    End Select
 End Sub
 
 Private Sub MDIForm_Unload(Cancel As Integer)
@@ -280,21 +286,26 @@ Public Sub mnuExtrasOptions_Click()
 End Sub
 
 Public Sub WindowTileVertical()
-    Me.Arrange FormArrangeConstants.vbTileVertical
+    ArrangeChildForms FormArrangeConstants.vbTileVertical
 End Sub
 Public Sub WindowTileHorizontal()
-    Me.Arrange FormArrangeConstants.vbTileHorizontal
+    ArrangeChildForms FormArrangeConstants.vbTileHorizontal
 End Sub
 Public Sub WindowCascade()
-    Me.Arrange FormArrangeConstants.vbCascade
+    ArrangeChildForms FormArrangeConstants.vbCascade
 End Sub
 Public Sub WindowArrangeIcons()
-    Me.Arrange FormArrangeConstants.vbArrangeIcons
+    ArrangeChildForms FormArrangeConstants.vbArrangeIcons
+End Sub
+Private Sub ArrangeChildForms(fa As FormArrangeConstants)
+    m_FormArrange = fa
+    Me.Arrange m_FormArrange
 End Sub
 
 Public Sub mnuHelpInfo_Click()
     frmAbout.Show vbModal, MDIMain
 End Sub
+
 
 Public Sub LoadTBPics()
     'ImageList1.ListImages.Add ,,LoadResPicture(
