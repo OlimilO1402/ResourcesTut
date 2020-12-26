@@ -17,7 +17,7 @@
 
 * MakeRes.exe (MakeRes.bat) 
   - if your project is in UNC-path (on a server-drive) start the exe
-    (you can fine MakeRes here)
+    (you can find MakeRes [here](https://github.com/OlimilO1402/MakeRes))
   - if your project is in local drive (or mounted) you may also start the bat-file
 
 Attention possible bugs: 
