@@ -244,6 +244,8 @@ Private Sub Form_Load()
     Case 4: Option4.Value = True
     End Select
     
+    BtnRegisterShellFileTypes.Caption = "Register Shell File Type: *" & Application.MyExt
+    
     'center Form
     Me.Move (Screen.Width - Me.Width) / 2, (Screen.Height - Me.Height) / 2
     
