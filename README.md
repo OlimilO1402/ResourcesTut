@@ -33,7 +33,16 @@ Attention possible bugs:
   Private Sub Form_Initialize()
       Call InitCommonControls
   End Sub
-
+  
+* ProgIcon and FileIcon
+  there are 2 different icons 
+  - one for the program itself, 
+  - one for the document-type your app is "associated" with.  
+  For creating icons, you could do the following, draw a bitmap/png
+  and convert it to an Icon
+  You can use an online tool for creating files of type *.ico
+  like [redketchup](https://redketchup.io/icon-converter)
+  
 * The example-app is a complete MDI-Application
   MDI means Multiple-Document-Interface. 
   you can learn how to:

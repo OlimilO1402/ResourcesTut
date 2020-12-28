@@ -228,9 +228,17 @@ Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Option Explicit
+Private Declare Function GetBkColor Lib "gdi32" (ByVal hDC As Long) As Long
+Private Declare Function GetDC Lib "user32" (ByVal hWnd As Long) As Long
 
 Private Sub Form_Load()
-
+    
+    Dim bkColor As Long: bkColor = GetBkColor(GetDC(tbsOptions.hWnd))
+    Debug.Print Hex(bkColor)
+    BackgroundColorAndAllChildren(tabPage1) = bkColor
+    BackgroundColorAndAllChildren(tabPage2) = bkColor
+    BackgroundColorAndAllChildren(tabPage3) = bkColor
+    
     'Me.ScaleWidth = 6255
     Me.Width = 6345
     ChkShowSplashAtStartup.Value = Abs(Settings.ShowSplashAtStartup)
@@ -250,7 +258,15 @@ Private Sub Form_Load()
     Me.Move (Screen.Width - Me.Width) / 2, (Screen.Height - Me.Height) / 2
     
 End Sub
-
+Private Property Let BackgroundColorAndAllChildren(ctrl As PictureBox, ByVal Color As Long)
+    ctrl.BackColor = Color
+    Dim c
+    For Each c In Me.Controls
+        If c.Container Is ctrl Then
+            c.BackColor = Color
+        End If
+    Next
+End Property
 Private Sub Form_KeyDown(KeyCode As Integer, Shift As Integer)
     Dim i As Integer
     'STRG+TAB, to move to the next tabpage
