@@ -17,6 +17,7 @@ Begin VB.Form frmOptions
    ShowInTaskbar   =   0   'False
    StartUpPosition =   2  'Bildschirmmitte
    Begin VB.PictureBox tabPage1 
+      BackColor       =   &H80000005&
       BorderStyle     =   0  'Kein
       Height          =   3300
       Left            =   240
@@ -83,6 +84,7 @@ Begin VB.Form frmOptions
       EndProperty
    End
    Begin VB.PictureBox tabPage3 
+      BackColor       =   &H80000005&
       BorderStyle     =   0  'Kein
       Height          =   2820
       Left            =   10320
@@ -162,6 +164,7 @@ Begin VB.Form frmOptions
       End
    End
    Begin VB.PictureBox tabPage2 
+      BackColor       =   &H80000005&
       BorderStyle     =   0  'Kein
       Height          =   2820
       Left            =   6360
@@ -233,8 +236,8 @@ Private Declare Function GetDC Lib "user32" (ByVal hWnd As Long) As Long
 
 Private Sub Form_Load()
     
-    Dim bkColor As Long: bkColor = GetBkColor(GetDC(tbsOptions.hWnd))
-    Debug.Print Hex(bkColor)
+    Dim bkColor As Long: bkColor = &H80000005  'GetBkColor(GetDC(tbsOptions.hWnd))
+    'Debug.Print Hex(bkColor)
     BackgroundColorAndAllChildren(tabPage1) = bkColor
     BackgroundColorAndAllChildren(tabPage2) = bkColor
     BackgroundColorAndAllChildren(tabPage3) = bkColor
