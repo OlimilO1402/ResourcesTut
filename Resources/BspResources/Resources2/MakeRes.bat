@@ -1,1 +1,0 @@
-rc Ressources.rc >>log.txt                                                                                  

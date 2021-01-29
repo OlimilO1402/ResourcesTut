@@ -1,2 +1,0 @@
-//Errors during compile will be logged here
-
