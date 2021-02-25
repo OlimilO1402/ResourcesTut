@@ -1,2 +1,2 @@
 //Constant for manifest file
-#define RT_MANIFEST     #24
+#define RT_MANIFEST     24
