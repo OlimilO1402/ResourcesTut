@@ -132,7 +132,7 @@ Public Sub StartSysInfo()
     Dim SysInfoPath As String
     
     ' Versuchen, den Systeminfo-Programmpfad/-namen aus der Registrierung abzurufen...
-    If GetKeyValue(HKEY_LOCAL_MACHINE, gREGKEYSYSINFO, gREGVALSYSINFO, SysInfoPath) Then
+    If Registry.GetKeyValue(HKEY_LOCAL_MACHINE, gREGKEYSYSINFO, gREGVALSYSINFO, SysInfoPath) Then
     ' Versuchen, nur den Systeminfo-Programmpfad aus der Registrierung abzurufen...
     ElseIf GetKeyValue(HKEY_LOCAL_MACHINE, gREGKEYSYSINFOLOC, gREGVALSYSINFOLOC, SysInfoPath) Then
         ' Überprüfen, ob bekannte 32-Dateiversion vorhanden ist

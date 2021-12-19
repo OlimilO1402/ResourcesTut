@@ -1,5 +1,5 @@
 STRINGTABLE DISCARDABLE 
-LANGUAGE LCID_GERMANY, 0 
+LANGUAGE LCID_GERMAN, 0 
 BEGIN
   IDOK            " &OK "
   IDCancel        " Abbre&chen "
